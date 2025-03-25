@@ -60,8 +60,25 @@ public:
 		com *= other;
         return com;
     }
+	
+	/*complex_number operator+(const T& i, const complex_number<T>& com)
+	{
+		com = *this;
+		com.real() += i;
+		return com;
+	}*/
 
 };
+/*template<typename T>
+complex_number<T>
+operator+(const T& i, const complex_number<T>& com)
+{
+	using com = complex_number<T>;
+	com.real() += i;
+    return com;
+}*/
+
+
 template<typename T>
 std::ostream&
 operator<<(std::ostream& os, const complex_number<T>& c) {

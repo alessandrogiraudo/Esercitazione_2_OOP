@@ -7,6 +7,7 @@ int main(void){
 	com c2(2, -3);
 	com c3(1, 2.0);
 	com c4(2.1, -3.4);
+	double c5 = 2.0;
 	
     std::cout << "c1 è : " << c1 << std::endl;
     std::cout << "c2 è : " << c2 << std::endl;
@@ -28,6 +29,9 @@ int main(void){
 	std::cout << c3<< " + " << c4 << " = " << (c3+c4) << std::endl;
 	std::cout << c1 << " *= " << c2 << " = " << (c1*=c2) << std::endl;
 	std::cout << c1 << " * " << c2 << " = " << (c1*c2) << std::endl;
+	
+	/* Somma tra un T e un complex_number<T>*/
+	std::cout << "La somma tra " << c5 << " e " << c1 << " è " << (c5+c1) << std::endl;
 		
 
     return 0;
