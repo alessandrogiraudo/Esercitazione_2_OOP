@@ -31,7 +31,7 @@ int main(void){
 	std::cout << c1 << " * " << c2 << " = " << (c1*c2) << std::endl;
 	
 	/* Somma tra un T e un complex_number<T>*/
-	std::cout << "La somma tra " << c5 << " e " << c1 << " è " << (c5+c1) << std::endl;
+	//std::cout << "La somma tra " << c5 << " e " << c1 << " è " << (c5+c1) << std::endl;
 		
 
     return 0;
