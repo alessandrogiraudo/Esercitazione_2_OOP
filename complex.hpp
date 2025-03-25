@@ -54,6 +54,12 @@ public:
 		im = imma;
 		return *this;
 	}
+	
+	complex_number operator*(const complex_number& other) const {
+        complex_number com = *this;
+		com *= other;
+        return com;
+    }
 
 };
 template<typename T>
