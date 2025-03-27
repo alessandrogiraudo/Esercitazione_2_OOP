@@ -1,10 +1,8 @@
 #pragma once
-#include <concepts> 
-#include <type_traits>  // Required for std::is_arithmetic
 
 
 template<typename T> 
-requires std::floating_point<T> 
+requires std::is_floating_point_v<T> 
 class complex_number 
 {
 	T   re;
@@ -17,41 +15,50 @@ public:
     
 	/* Improve the situation of coniugato*/
 	
-	T real() const {return re;}
-	T imag() const {return im;}	
+	T real(void) const {
+		return re;
+		};
+	T imag(void) const {
+		return im;
+		};
+		
 	complex_number coniugato() const {
 		return complex_number(re, -im);
-	}
-	
-	/*complex_number& operator+=(const complex_number& other) {
-        reale = real;
-        immag = imma;
-        c = other.real;
-        d = other.imma;
-        real = reale + c;
-        immag = immag + d;
-        return *this;
-	}*/
+	};
 	
 	complex_number& operator+=(const complex_number<T>& other) {
-		re += other.re;
-		im += other.im;
+		T a = re;
+		T b = im;
+		T c = other.re;
+		T d = other.im;
+		re = a+c;
+		im = b+d;
 		return *this;
 	}
 	
 	complex_number operator+(const complex_number& other) const {
-		//return complex_number com = *this;
 		complex_number com = *this;
 		com += other;
 		return com;
 	}
 	
+	complex_number& operator+=(const T& other) {
+		re += other;
+		return *this;
+	
+	complex_number operator+(const T& other) {
+		complex_number com = *this;
+		com += other;
+		return com;
+	}
 	
 	complex_number& operator*=(const complex_number& other) {
-		T real = re * other.re - im * other.im;
-		T imma = re * other.im + im * other.re;
-		re = real;
-		im = imma;
+		T a = re;
+		T b = im;
+		T c = other.re;
+		T d = other.im;
+		re = a*c - b*d;
+		im = a*d + b*c;
 		return *this;
 	}
 	
@@ -61,37 +68,43 @@ public:
         return com;
     }
 	
-	/*complex_number operator+(const T& i, const complex_number<T>& com)
-	{
-		com = *this;
-		com.real() += i;
-		return com;
-	}*/
+	complex_number& operator*=(const T& other) {
+		re *= other;
+		im *= other;
+		return *this;
+	}
+	
+	complex_number operator*(const T& other) const {
+        complex_number com = *this;
+		com *= other;
+        return com;
+    }
 
 };
-/*template<typename T>
+
+template<typename T>
 complex_number<T>
 operator+(const T& i, const complex_number<T>& com)
 {
-	using com = complex_number<T>;
-	com.real() += i;
-    return com;
-}*/
+    return com + i;
+};
 
+complex_number<T>
+operator*(const T& i, const complex_number<T>& com)
+{
+    return com*i;
+};
 
 template<typename T>
 std::ostream&
-operator<<(std::ostream& os, const complex_number<T>& c) {
-	os << c.real();
-	 if (c.imag() >= 0) {
-        os << " + " << c.imag() << "i";
+operator<<(std::ostream& os, const complex_number<T>& com) {
+	os << com.real();
+	 if (com.imag() >= 0) {
+        os << " + " << com.imag() << "i";
 	 } else{
-		os << " - " << -c.imag() << "i";
+		os << " - " << -com.imag() << "i";
 	}
 	
 	return os;
-}
-
-
-
+};
 
