@@ -47,8 +47,6 @@ public:
 		return com;
 	}
 	
-	
-	
 	complex_number& operator*=(const complex_number& other) {
 		T a = re;
 		T b = im;
@@ -70,7 +68,7 @@ public:
 		return *this;
 	}
 	
-	complex_number operator+(const T& other) {
+	complex_number operator+(const T& other) const {
 		complex_number com = *this;
 		com += other;
 		return com;
@@ -92,7 +90,7 @@ public:
 
 template<typename T>
 complex_number<T> operator+(const T& i, const complex_number<T>& com) {
-    return i + com ;
+    return com+i;
 }
 
 template<typename T>
@@ -108,5 +106,4 @@ std::ostream& operator<<(std::ostream& os, const complex_number<T>& com) {
 		os << com.real() << " - " << -com.imag() << "i" ;	
 	}
 	return os;
-	
 };
