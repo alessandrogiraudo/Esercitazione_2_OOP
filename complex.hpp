@@ -17,20 +17,21 @@ public:
 		re = reale;
 		im = immaginario;
 	};
-    
-	/* Improve the situation of coniugato*/
 	
+	/* Parte reale e parte immaginaria */
 	T real(void) const {
 		return re;
 		};
 	T imag(void) const {
 		return im;
 		};
-		
+	
+	/* Coniugato */	
 	complex_number coniugato() const {
 		return complex_number(re, -im);
 	};
 	
+	/* overload per operazioni +=, +, *=, * tra complessi*/
 	complex_number& operator+=(const complex_number& other) {
 		T a = re;
 		T b = im;
@@ -63,6 +64,7 @@ public:
         return com;
     }
 	
+	/* Overload per operazioni +=, +, *=, * tra un double/float e un complesso*/
 	complex_number& operator+=(const T& other) {
 		re += other;
 		return *this;
