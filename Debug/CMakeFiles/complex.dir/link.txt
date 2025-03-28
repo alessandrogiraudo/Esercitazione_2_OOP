@@ -1,1 +1,1 @@
-/usr/bin/c++  -Wall -Wshadow -g CMakeFiles/complex.dir/complex.cpp.o -o complex 
+/usr/bin/c++  -Wall -Wshadow CMakeFiles/complex.dir/complex.cpp.o -o complex 
